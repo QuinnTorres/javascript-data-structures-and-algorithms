@@ -32,8 +32,9 @@ class LinkedList {
         return oldHead;
     }
 
-    add(node) {
-        let currNode = node;
+    add(data) {
+        let currNode = this.head;
+        let node = new Node(data);
 
         while(currNode.next != null) {
             currNode = currNode.next;
@@ -42,16 +43,18 @@ class LinkedList {
         currNode.next = node;
     }
 
-    insertAt(node, index) {
-        if (isInvalidIndex(index)) {
+    insertAt(index, data) {
+        if (this.isInvalidIndex(index)) {
             return -1;
         }
+
+        let node = new Node(data);
 
         if (index === 0) {
             node.next = this.head;
             this.head = node;
         } else {
-            let parentNode = get(index - 1);
+            let parentNode = this.get(index - 1);
 
             node.next = parentNode.next;
             parentNode.next = node;
@@ -59,26 +62,26 @@ class LinkedList {
     }
 
     removeFrom(index) {
-        if (isInvalidIndex(index)) {
+        if (this.isInvalidIndex(index)) {
             return -1;
         }
 
         if(index === 0) {
             this.head = this.head.next;
         } else {
-            let parentNode = get(index - 1);
+            let parentNode = this.get(index - 1);
             parentNode.next = parentNode.next.next;
         }
     }
 
-    remove(node) {
-        let currNode = head;
+    remove(data) {
+        let currNode = this.head;
 
-        if(currNode === node) {
+        if(currNode.data === data) {
             this.head = this.head.next;
         } else {
             while(currNode.next !== null) {
-                if(node === currNode.next) {
+                if(currNode.next.data === data) {
                     currNode.next = currNode.next.next;
                 } else {
                     currNode = currNode.next;
@@ -87,14 +90,17 @@ class LinkedList {
         }
     }
 
-    indexOf(node) {
-        let currNode = head;
+    indexOf(data) {
+        let currNode = this.head;
         let index = 0;
 
         while(currNode != null) {
-            if(node === currNode) {
+            if(data === currNode.data) {
                 return index;
             }
+
+            currNode = currNode.next;
+            index++;
         }
 
         return -1;
@@ -106,9 +112,9 @@ class LinkedList {
 
     get(index) {
         let currIndex = 0;
-        let currNode = 0;
+        let currNode = this.head;
 
-        if (isInvalidIndex(index)) {
+        if (this.isInvalidIndex(index)) {
             return -1;
         }
 
@@ -116,7 +122,7 @@ class LinkedList {
             return this.head;
         }
 
-        while(currIndex != index && currNode.next != null) {
+        while(currIndex !== index && currNode.next != null) {
             currNode = currNode.next;
             currIndex++;
         }
@@ -163,6 +169,24 @@ function test() {
     console.log(`add 11`);
     list.add(11);
     console.log(`list: ${list}\n`);
+
+    console.log(`insertAt(3, 12)`);
+    list.insertAt(3, 12);
+    console.log(`list: ${list}\n`);
+
+    console.log(`removeFrom(3)`);
+    list.removeFrom(3);
+    console.log(`list: ${list}\n`);
+
+    console.log(`remove(11)`);
+    list.remove(11);
+    console.log(`list: ${list}\n`);
+
+    console.log(`indexOf(8): ${list.indexOf(8)}\n`);
+
+    list = new LinkedList();
+
+    console.log(`isEmpty(): ${list.isEmpty()}\n`);
 
     console.log(`size: ${list.size}\n`);
 }
