@@ -61,18 +61,20 @@ class BST {
             this.remove(data, this.root);
         } else {
             if (node.data === data) {
-                if (node.left === null && node.right === null) {
-                    node = null;
-                } else if (node.left !== null) {
+                if (node.left !== null && node.right === null) {
                     node = node.left;
-                } else if (node.right !== null) {
+                } else if (node.right !== null && node.left === null) {
                     node = node.right
-                } else {
+                } else if (node.right !== null && node.left !== null) {
                     let newData = this.min(node.right).data;
     
                     this.remove(newData, node.right);
                     node.data = newData;
                 }
+            } else if (node.left.data === data && node.left.left === null && node.left.right === null) {
+                node.left = null;
+            } else if (node.right.data === data  && node.right.left === null && node.right.right === null) {
+                node.right = null;
             } else if (data < node.data && node.left) {
                 this.remove(data, node.left);
             } else if (data > node.data && node.right) {
@@ -171,7 +173,7 @@ function test() {
 
     console.log(`data:`);
     data.toString();
-    console.log('\n');
+    console.log('');
 
     console.log('add 20, 80, 10, 30, 70, 90');
     data.add(20);
@@ -182,7 +184,7 @@ function test() {
     data.add(90);
     console.log(`data:`);
     data.toString();
-    console.log('\n');
+    console.log('');
 
     console.log(`contains(30): ${data.contains(30)}`);
     console.log(`contains(25): ${data.contains(25)}\n`);
@@ -191,17 +193,23 @@ function test() {
     data.remove(90);
     console.log(`data:`);
     data.toString();
-    console.log('\n');
+    console.log('');
 
-    console.log(`inorder(): ${data.inorder()}\n`);
+    console.log(`inorder():`);
+    data.inorder();
+    console.log('');
 
-    console.log(`preorder(): ${data.preorder()}\n`);
+    console.log(`preorder():`);
+    data.preorder();
+    console.log('');
 
-    console.log(`postorder(): ${data.postorder()}\n`);
+    console.log(`postorder():`);
+    data.postorder();
+    console.log('');
 
     console.log(`min(): ${data.min()}\n`);
 
-    console.log(`max(): ${data.min()}\n`);
+    console.log(`max(): ${data.max()}\n`);
 }
 
 test();
