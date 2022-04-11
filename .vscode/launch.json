@@ -11,8 +11,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/heap.js",
-            "runtimeExecutable": "/Users/quinn/.nvm/versions/node/v12.19.0/bin/node"
+            "program": "${file}",
+            "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v12.19.0/bin/node"
         }
     ]
 }
