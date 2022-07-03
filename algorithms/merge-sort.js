@@ -10,7 +10,7 @@ function mergeSort(array) {
 }
 
 /**
- * Sort an array of numbers using merge sort, given a range of indexes to sort
+ * Sort an array of numbers recursively using merge sort, given a range of indexes to sort
  *
  * @param array the array to sort
  * @param start the starting index to sort
@@ -24,10 +24,10 @@ function mergeSortRec(array, start, end) {
         return [array[start]];
     }
 
-    // Merge sort left half
+    // 1. Merge sort left half
     let leftHalf = mergeSortRec(array, start, Math.floor((start + end) / 2));
 
-    // Merge sort right half
+    // 2. Merge sort right half
     let rightHalf = mergeSortRec(array, Math.floor((start + end) / 2) + 1, end);
 
     let leftIndex = rightIndex = 0;
@@ -35,7 +35,7 @@ function mergeSortRec(array, start, end) {
     let currRight = rightHalf[rightIndex];
     let combined = [];
 
-    // Combine sorted halves
+    // 3. Combine sorted halves
     while(currLeft || currRight) {
         if (!currLeft || currLeft > currRight) {
             combined.push(currRight);
@@ -48,7 +48,7 @@ function mergeSortRec(array, start, end) {
         }
     }
 
-    // Return sorted array
+    // 4. Return sorted array
     return combined;
 }
 
