@@ -7,6 +7,14 @@ class Graph {
         this.visited = [];
     }
 
+    /**
+     * Add an edge to the graph
+     *
+     * @param v the first vertex in the edge
+     * @param w the second vertex in the edge
+     *
+     * @return {undefined}
+     */
     addEdge(v, w) {
         if (this.adj[v] === undefined) {
             this.adj[v] = [];
@@ -21,12 +29,26 @@ class Graph {
         this.edges++;
     }
 
+    /**
+     * Search for a vertex using depth-first search and log it if found
+     *
+     * @param v the vertex to search for
+     *
+     * @return {undefined}
+     */
     dfs(v) {
         this.visited = [];
 
         this.dfsRecursive(v);
     }
 
+    /**
+     * Search for a vertex using depth-first search recursively and log it if found
+     *
+     * @param v the vertex to search for
+     *
+     * @return {undefined}
+     */
     dfsRecursive(v) {
         let verticesToVisit = this.adj[v].filter((vertex) => !this.visited.includes(vertex));
 
@@ -42,12 +64,26 @@ class Graph {
         console.log(v);
     }
 
+    /**
+     * Search for a vertex using breadth-first search and log it if found
+     *
+     * @param v the vertex to search for
+     *
+     * @return {undefined}
+     */
     bfs(v) {
         this.visited = [];
 
         this.bfsRecursive(v);
     }
 
+    /**
+     * Search for a vertex using breadth-first search recursively and log it if found
+     *
+     * @param v the vertex to search for
+     *
+     * @return {undefined}
+     */
     bfsRecursive(v) {
         let verticesToVisit = this.adj[v].filter((vertex) => !this.visited.includes(vertex));
 
@@ -66,6 +102,11 @@ class Graph {
         }
     }
 
+    /**
+     * Log all edges in the graph
+     *
+     * @return {undefined}
+     */
     toString() {
         for(let i = 0; i < this.adj.length; i++) {
             if (this.adj[i] !== undefined) {
@@ -80,6 +121,7 @@ class Graph {
 function test() {
     let data = new Graph(20);
 
+    // Add random vertices with values between 0 and 20 and edges between them
     while(data.edges !== 20) {
         let v = 0;
         let w = 0;
@@ -92,14 +134,17 @@ function test() {
         data.addEdge(v, w);
     }
 
+    // Graph with initial data
     console.log('graph:');
     data.toString();
     console.log('');
 
+    // Depth-first search
     console.log(`dfs:`);
     data.dfs(0);
     console.log('');
 
+    // Breadth-first search
     console.log(`bfs:`);
     data.bfs(0);
 }
