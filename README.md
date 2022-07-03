@@ -1,4 +1,4 @@
-# DIY Data Structures & Algorithms in JS
+# DIY Data Structures & Algorithms in JavaScript
 
 ## Overview
 
