@@ -14,6 +14,13 @@ class Trie {
         this.alphabetLength = alphabetLength;
     }
 
+    /**
+     * Add a word to the trie
+     *
+     * @param word the word to add
+     *
+     * @return {undefined}
+     */
     add(word) {
         let currentNode = this.root;
 
@@ -33,6 +40,13 @@ class Trie {
         }
     }
 
+    /**
+     * Check if the trie contains a given word
+     *
+     * @param word the word to search for
+     *
+     * @return {Boolean} true if the trie contains the given word 
+     */
     contains(word) {
         let currentNode = this.root;
 
@@ -53,20 +67,22 @@ class Trie {
 function test() {
     let list = new Trie(26);
 
-    console.log('add words: hello goodbye hell what wow yeehaw quinn');
+    // Add
+    console.log('add words: hello world it is great to finally meet you');
     list.add('hello');
-    list.add('goodbye');
-    list.add('hell');
-    list.add('what');
-    list.add('wow');
-    list.add('yeehaw');
-    list.add('quinn');
-    list.add('quinnton');
-    list.add('abcdefg');
-
-    console.log(`contains('quinn'): ${list.contains('quinn')}`);
-    console.log(`contains('quinnton'): ${list.contains('quinnton')}`);
-    console.log(`contains('abcdef'): ${list.contains('abcdef')}`);
+    list.add('world');
+    list.add('it');
+    list.add('is');
+    list.add('great');
+    list.add('to');
+    list.add('finally');
+    list.add('meet');
+    list.add('you');
+    
+    // Contains
+    console.log(`contains('finally'): ${list.contains('finally')}`);
+    console.log(`contains('finale'): ${list.contains('finale')}`);
+    console.log(`contains('great'): ${list.contains('great')}`);
 }
 
 test();
