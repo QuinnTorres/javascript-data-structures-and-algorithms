@@ -94,6 +94,11 @@ class MaxHeap {
     }
 }
 
+/**
+ * Test the functionality of the heap
+ *
+ * @return {undefined}
+ */
 function test() {
     let heap = new MaxHeap();
 

@@ -118,6 +118,11 @@ class Graph {
     }
 }
 
+/**
+ * Test the functionality of the graph
+ *
+ * @return {undefined}
+ */
 function test() {
     let data = new Graph(20);
 

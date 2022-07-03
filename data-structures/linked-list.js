@@ -227,6 +227,11 @@ class LinkedList {
     }
 }
 
+/**
+ * Test the functionality of the linked list
+ *
+ * @return {undefined}
+ */
 function test() {
     let list = new LinkedList();
 

@@ -235,6 +235,11 @@ class BST {
     }
 }
 
+/**
+ * Test the functionality of the binary search tree
+ *
+ * @return {undefined}
+ */
 function test() {
     let data = new BST(50);
 
