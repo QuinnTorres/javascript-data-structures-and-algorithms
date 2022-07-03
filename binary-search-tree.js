@@ -12,6 +12,14 @@ class BST {
         this.size = 1;
     }
 
+    /**
+     * Add a node according to the binary tree rules
+     *
+     * @param data the data to put in the node to add
+     * @param node the node to start the addition from, defaulted to the root
+     *
+     * @return {undefined}
+     */
     add(data, node) {
         if (node === undefined) {
             if (this.root !== null) {
@@ -34,6 +42,14 @@ class BST {
         }
     }
 
+    /**
+     * Check if the tree contains a node with data matching a given node
+     *
+     * @param data the data to search for a node containing it
+     * @param node the node to start the search from, defaulted to the root
+     *
+     * @return {Boolean} true if there is node with data matching the given node
+     */
     contains(data, node) {
         if (node === undefined) {
             if (this.root !== null) {
@@ -56,6 +72,14 @@ class BST {
         }
     }
 
+    /**
+     * Remove a node from the tree if it has data matching the given node
+     *
+     * @param data the data to search for and remove the node containing it from the tree
+     * @param node the node to start the search from, defaulted to the root
+     *
+     * @return {undefined}
+     */
     remove(data, node) {
         if (node === undefined) {
             this.remove(data, this.root);
@@ -83,6 +107,14 @@ class BST {
         }
     }
 
+    /**
+     * Traverse the tree in an inorder fashion and log the data from the ndoes
+     * as they are visited
+     *
+     * @param node the node to start the traversal from, defaulted to the root
+     *
+     * @return {undefined}
+     */
     inorder(node) {
         if (node === undefined) {
             this.inorder(this.root);
@@ -99,6 +131,14 @@ class BST {
         }
     }
 
+    /**
+     * Traverse the tree in an preorder fashion and log the data from the ndoes
+     * as they are visited
+     *
+     * @param node the node to start the traversal from, defaulted to the root
+     *
+     * @return {undefined}
+     */
     preorder(node) {
         if (node === undefined) {
             this.preorder(this.root);
@@ -115,6 +155,14 @@ class BST {
         }
     }
 
+    /**
+     * Traverse the tree in an postorder fashion and log the data from the ndoes
+     * as they are visited
+     *
+     * @param node the node to start the traversal from, defaulted to the root
+     *
+     * @return {undefined}
+     */
     postorder(node) {
         if (node === undefined) {
             this.postorder(this.root);
@@ -131,6 +179,13 @@ class BST {
         }
     }
 
+    /**
+     * Find and return the node with the smallest data in the tree
+     *
+     * @param node the node to start the traversal from, defaulted to the root
+     *
+     * @return {Node} the node that was removed
+     */
     min(node) {
         if (node === undefined) {
             if (this.root !== null) {
@@ -147,6 +202,13 @@ class BST {
         }
     }
 
+    /**
+     * Find and return the node with the largest data in the tree
+     *
+     * @param node the node to start the traversal from, defaulted to the root
+     *
+     * @return {Node} the node that was removed
+     */
     max(node) {
         if (node === undefined) {
             if (this.root !== null) {
@@ -163,6 +225,11 @@ class BST {
         }
     }
 
+    /**
+     * Log the tree's data in an inorder traversal
+     *
+     * @return {undefined}
+     */
     toString() {
         this.inorder();
     }
@@ -171,10 +238,12 @@ class BST {
 function test() {
     let data = new BST(50);
 
+    // Initial empty tree
     console.log(`data:`);
     data.toString();
     console.log('');
 
+    // Tree with initial data
     console.log('add 20, 80, 10, 30, 70, 90');
     data.add(20);
     data.add(80);
@@ -186,29 +255,36 @@ function test() {
     data.toString();
     console.log('');
 
+    // Contains
     console.log(`contains(30): ${data.contains(30)}`);
     console.log(`contains(25): ${data.contains(25)}\n`);
 
+    // Remove
     console.log(`remove(90)`);
     data.remove(90);
     console.log(`data:`);
     data.toString();
     console.log('');
 
+    // Inorder
     console.log(`inorder():`);
     data.inorder();
     console.log('');
 
+    // Preorder
     console.log(`preorder():`);
     data.preorder();
     console.log('');
 
+    // Postorder
     console.log(`postorder():`);
     data.postorder();
     console.log('');
 
+    // Min
     console.log(`min(): ${data.min()}\n`);
 
+    // Max
     console.log(`max(): ${data.max()}\n`);
 }
 
